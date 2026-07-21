@@ -1,0 +1,117 @@
+.reviews-section {
+  padding: 120px 0;
+  background-color: var(--color-primary); /* Deep green background for high contrast luxury */
+  color: var(--color-bg);
+  overflow: hidden;
+  position: relative;
+}
+
+.reviews-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.reviews-title {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0 0 15px 0;
+}
+
+.reviews-stars {
+  font-size: 1.2rem;
+  color: #F6C87C; /* Soft gold */
+  letter-spacing: 2px;
+}
+
+.reviews-marquee-container {
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  /* Fading edges to make the cards appear out of nowhere */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.reviews-marquee {
+  display: flex;
+  width: max-content;
+  /* Autoplay animation */
+  animation: scrollMarquee 45s linear infinite;
+}
+
+/* Pause on hover */
+.reviews-marquee:hover {
+  animation-play-state: paused;
+}
+
+.review-card {
+  width: 380px;
+  margin-right: 30px; /* Instead of gap for perfect -50% translation */
+  background-color: rgba(255, 255, 255, 0.03); /* Extremely subtle glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.4s ease;
+  cursor: grab; /* Shows it's interactive, though it auto-scrolls */
+}
+
+.review-card:active {
+  cursor: grabbing;
+}
+
+.review-card:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(-8px);
+}
+
+.review-card .review-stars {
+  color: #F6C87C;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.review-text {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 30px 0;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.review-author {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  opacity: 0.7;
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Translating exactly half the width makes the loop perfectly seamless */
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-title {
+    font-size: 2.2rem;
+  }
+  .review-card {
+    width: 300px;
+    padding: 30px 20px;
+  }
+}
